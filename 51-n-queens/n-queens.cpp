@@ -3,7 +3,6 @@ public:
     vector<vector<string>> ans;
     
     bool issafe(vector<vector<char>>& q, int row, int col, int n) {
-    // Check upper element
     int duprow = row;
     int dupcol = col;
 
@@ -19,15 +18,6 @@ public:
     while (col >= 0) {
         if (q[row][col] == 'Q')
             return false;
-        col--;
-    }
-
-    row = duprow;
-    col = dupcol;
-    while (row >= 0 && col >= 0) { // Updated loop for upper direction
-        if (q[row][col] == 'Q')
-            return false;
-        row--;
         col--;
     }
 
