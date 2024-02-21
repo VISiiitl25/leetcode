@@ -1,16 +1,12 @@
 class Solution {
 public:
     int rangeBitwiseAnd(int left, int right) {
-        if(left==0)return 0;
-        long long x=log2(left);
-        long long y=log2(right);
-        int ans=left;
-        if(left==right)return left;
-        if(x==y){
-            for(long long i=left+1;i<=right;i++){
-                ans=ans&i;
-            }
-        }
-        return x==y?ans:0;
+         bitset<32> b1(left), b2(right), b3(0);
+        for (int i = 31; i >= 0; i--)
+            if (b1[i] == b2[i])
+                b3[i] = b1[i];
+            else
+                break;
+        return b3.to_ulong();
     }
 };
